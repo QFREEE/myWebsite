@@ -13,7 +13,25 @@
 
         <div class = "section-2">
 
-            <p>stuff</p>
+            <h1>Try This</h1>
+            <form action="" method="post" novalidate>
+                {{ form.hidden_tag() }}
+                <p>
+                    {{ form.twitter_name.label }}<br>
+                    {{ form.twitter_name(size=16) }}
+                </p>
+          
+                <p>{{ form.submit() }}</p>
+            </form>
+
+            <textarea rows="4" cols="50">
+            
+            {% if showResult %}
+                {{ form.results }}
+            {% endif %}
+            </textarea>
+
+ 
         </div>
     </div>
 {% endblock content %}

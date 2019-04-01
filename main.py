@@ -13,24 +13,37 @@
 # limitations under the License.
 
 # [START gae_python37_app]
-from flask import Flask,render_template
+from flask import Flask,render_template,flash,redirect,request
+from project1 import TwitterForm
+from flask_wtf import FlaskForm
 
+# from config import Config
 
-# If `entrypoint` is not defined in app.yaml, App Engine will look for an app
-# called `app` in `main.py`.
 app = Flask(__name__)
-
-
+# app.config.from_object(Config)
+app.config['SECRET_KEY'] = 'any secret string'
 
 @app.route('/')
 def home():
     """Return a friendly HTTP greeting."""
     return render_template ('home.html')
 
-@app.route('/project1.html')
-def project1():
-    """Return a friendly HTTP greeting."""
-    return render_template ('project1.html')
+
+
+@app.route('/project1.html', methods=['GET', 'POST'])
+def submit():
+    form = TwitterForm()
+    if request.method == 'POST':
+        if form.validate_on_submit() == False:
+            
+            return render_template('project1.html',  form=form,showResult = False)
+        else:
+            results = "asdfa"
+            return render_template('project1.html',form=form, showResult = True, results =results)
+        
+    elif request.method == 'GET':
+        return render_template('project1.html', form=form,showResult = False)
+
 
 @app.errorhandler(404)
 def page_not_found(error):
@@ -40,5 +53,5 @@ if __name__ == '__main__':
     # This is used when running locally only. When deploying to Google App
     # Engine, a webserver process such as Gunicorn will serve the app. This
     # can be configured by adding an `entrypoint` to app.yaml.
-    app.run(host='127.0.0.1', port=8080, debug=True)
+    app.run(debug=True)
 # [END gae_python37_app]
