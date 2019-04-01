@@ -21,26 +21,20 @@ from flask import Flask,render_template
 app = Flask(__name__)
 
 
-posts = [
-    {
 
-        'author' : 'asdf',
-        'title' : ' blog post 1'
-
-    },
-    {
-        'author' : 'asfdasdfasfd',
-        'title' : 'asdfg'
-    }
-]
 @app.route('/')
-def hello():
+def home():
     """Return a friendly HTTP greeting."""
-    return render_template ('home.html',posts = posts,title= "123")
+    return render_template ('home.html')
 
-@app.route('/about')
-def about():
-    return render_template('about.html')
+@app.route('/project1.html')
+def project1():
+    """Return a friendly HTTP greeting."""
+    return render_template ('project1.html')
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('404_page.html'), 404
 
 if __name__ == '__main__':
     # This is used when running locally only. When deploying to Google App

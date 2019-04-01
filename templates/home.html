@@ -1,7 +1,36 @@
 {% extends "layout.html" %}
 {% block content %}
-{%  for post in posts %}
-    <h1> {{post.title}}</h1>
-    <p> By {{post.author }}</p>
-{% endfor %}
+<div class="grid-2">
+    <div class="section-1">
+        <i class="fas fa-code fa-5x white"></i>
+        <h2>Yuntong Qu</h2>
+        <p>Austin,TX</p>
+        <a href="https://www.linkedin.com/in/yuntong-qu-617a51138/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/QFREEE" target="_blank"><i class="fab fa-github"></i></a>
+    </div>
+    <div class="section-2">
+        <h2>About</h2>
+        <p>Hi, welcome to my personal page! </p>
+        <p>I am a second year Computer Science student at UT Ausin.</p>
+        <p>Technology and Dota2 are my passions.</p>
+        <p>Interested in data engineering and computer vision.</p>
+
+
+
+        <h2>Skills</h2>
+        <p>Familiar with: Python, Java, C, R, Linux, git</p>
+        <p>Learning: Scala, MySQL</p>
+
+
+
+        <h2>Projects</h2>
+        <a href="project1.html">Twitter_Random_Wiriter</a>
+  
+        <h2>Contact</h2>
+        <p>yuntong@utexas.edu</p>
+
+        <h2>Resume</h2>
+        <a href="https://drive.google.com/file/d/1Ko2Mw98zcjEh675ASyaZru4IMZFQUhJ6/view?usp=sharing">My_Resume </a>
+    </div>
+</div>
 {% endblock content %}
