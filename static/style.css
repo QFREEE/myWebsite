@@ -6,6 +6,10 @@
     grid-template-columns: repeat(2,1fr);
 }
 
+textarea {
+    overflow: auto;
+  }
+  
 body{
     margin: 0;
     padding: 0;

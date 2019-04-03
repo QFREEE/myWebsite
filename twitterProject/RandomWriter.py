@@ -1,3 +1,5 @@
+""" Based on final project in CS109 taught by Arther Peters"""
+
 """ word, character,byte, none"""
 
 import requests
@@ -229,7 +231,7 @@ class RandomWriter(object):
       for tweet in tweets :
         wordList = tweet.split()
         for word in wordList:
-          if word[0] != 'a' and word[0:5] != "https":
+          if word[0] != '@' and "https" not in word:
             yield word
     
     def train_tweets(self,username):

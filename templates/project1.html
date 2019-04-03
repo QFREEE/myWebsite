@@ -2,21 +2,24 @@
 {% block content %}
 <div class="grid-2">
         <div class="section-1">
-        
+            <i class = "fab fa-twitter fa-5x white"   ></i>
+
+
             <h2>Twitter_Random_Wiriter</h2>
             <p>This project is done by Python.
                 The main idea is crawl tweet text with tweety, then put the info we gathered 
                 into a Markov Chain.
             </p>
-         
+            <!-- <a href="https://github.com/QFREEE/python2019">View source code</a> -->
         </div>
 
         <div class = "section-2">
-
-            <h1>Try This</h1>
+            <br>
+            <br>
+            <h1>Put in twitter user id</h1>
 
             <form action = "" method = "post" id = "usernameForm" onsubmit = "return false;">
-              <p>Enter Name:</p>
+              <p>Enter Here:</p>
               <p><input type = "text" name = "username" /></p>
               <p><input  value = "submit" type = "submit" /></p>
 
@@ -34,23 +37,26 @@
                               }
                           }
                       }
-                      alert(event.currentTarget[0].value)
+                    
                       ajax.send(JSON.stringify({username: event.currentTarget[0].value}))
                       return false
                   }
                   document.getElementById('usernameForm').addEventListener('submit',submit1)
               </script>
-             
-              
-    
            </form>
-           
+           <br>
 
-           
-  
+           <!-- <p id = "resultArea"></p> -->
+           <!-- <div id="resultArea">
+               <script>
+                   function chatMessageRecieved(message) {
+                    $("#resultArea").append("<p> " + messsage + "</p>")
+            }
+               </script>
 
-            <textarea id = "resultArea">
-            {{ result }}
+        </div>  -->
+
+            <textarea id = "resultArea" placeholder="It may take a few seconds..." cols="50" rows="8" >
             </textarea>
 
  
