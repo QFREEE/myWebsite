@@ -29,12 +29,6 @@ def home():
     return render_template ('home.html')
 
 
-
-
-@app.route('/success/<name>')
-def success(name):
-   return 'welcome %s' % name
-
 @app.route('/project1.html',methods=['POST','GET'])
 def submit():
     # # form = TwitterForm()
@@ -52,11 +46,9 @@ def submit():
     #     return render_template('project1.html')        
     if request.method == 'POST':
       username = request.form['username']
-
       
-  
       result = twitterGenerator(username)
-      return render_template('project1.html',result = result)
+      return result
     else:
   
       return render_template('project1.html')

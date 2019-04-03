@@ -15,11 +15,31 @@
 
             <h1>Try This</h1>
 
-            <form action = "" method = "post" id = "usernameForm">
+            <form action = "" method = "post" id = "usernameForm" onsubmit = "return false;">
               <p>Enter Name:</p>
               <p><input type = "text" name = "username" /></p>
               <p><input  value = "submit" type = "submit" /></p>
+
               <script>
+                    function submit1(event){
+                     
+                      console.log("sd");
+                      let ajax = new XMLHttpRequest
+                      ajax.open('post','./')
+                      
+                      ajax.onreadystatechange = function(){
+                          if (ajax.readyState === 4 ){
+                              if(ajax.status === 200){
+                                  document.getElementById('texasarea').value = ajax.responseText
+                              }
+                          }
+                      }
+                      ajax.send(event.currentTarget.value)
+                      return false
+                  }
+                  document.getElementById('usernameForm').addEventListener('submit',submit1)
+              </script>
+             
               
     
            </form>
