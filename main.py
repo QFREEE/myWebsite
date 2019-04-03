@@ -45,8 +45,8 @@ def submit():
     # else:
     #     return render_template('project1.html')        
     if request.method == 'POST':
-      username = request.form['username']
-      
+      reuqest_json = json.loads(request.data, strict=False)
+      username = reuqest_json.get('username')
       result = twitterGenerator(username)
       return result
     else:

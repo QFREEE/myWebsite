@@ -217,12 +217,11 @@ class RandomWriter(object):
         oldest = alltweets[-1].id - 1
         
        
-      i = 0
+ 
       # yielding all the original tweet from user
       for tweet in alltweets:
         if (not tweet.retweeted) and ('RT @' not in tweet.text):
-          print(i)
-          i = i+1
+  
           yield tweet.text
     
     def clean_tweets(self,username):
@@ -270,7 +269,7 @@ class RandomWriter(object):
         elif self.tokenization == Tokenization.byte:
             if not isinstance(data, bytes):
                 raise TypeError("data is not bytes")
-                print("no outgoing")
+    
         elif self.tokenization == Tokenization.none:
             if not hasattr(data, "__iter__"):
                 raise TypeError("data is not iterable")

@@ -24,17 +24,18 @@
                     function submit1(event){
                      
                       console.log("sd");
-                      let ajax = new XMLHttpRequest
-                      ajax.open('post','./')
+                      let ajax = new XMLHttpRequest()
+                      ajax.open('post','./project1.html')
                       
                       ajax.onreadystatechange = function(){
                           if (ajax.readyState === 4 ){
                               if(ajax.status === 200){
-                                  document.getElementById('texasarea').value = ajax.responseText
+                                  document.getElementById('resultArea').value = ajax.responseText
                               }
                           }
                       }
-                      ajax.send(event.currentTarget.value)
+                      alert(event.currentTarget[0].value)
+                      ajax.send(JSON.stringify({username: event.currentTarget[0].value}))
                       return false
                   }
                   document.getElementById('usernameForm').addEventListener('submit',submit1)
@@ -48,7 +49,7 @@
            
   
 
-            <textarea>
+            <textarea id = "resultArea">
             {{ result }}
             </textarea>
 
