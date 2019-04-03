@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # [START gae_python37_app]
-from flask import Flask,render_template,flash,redirect,request
+from flask import Flask,render_template,flash,redirect,request,url_for,json
 from project1 import TwitterForm
 from flask_wtf import FlaskForm
 
@@ -30,20 +30,32 @@ def home():
 
 
 
-@app.route('/project1.html', methods=['GET', 'POST'])
-def submit():
-    form = TwitterForm()
-    if request.method == 'POST':
-        if form.validate_on_submit() == False:
-            
-            return render_template('project1.html',  form=form,showResult = False)
-        else:
-            results = "asdfa"
-            return render_template('project1.html',form=form, showResult = True, results =results)
-        
-    elif request.method == 'GET':
-        return render_template('project1.html', form=form,showResult = False)
 
+@app.route('/success/<name>')
+def success(name):
+   return 'welcome %s' % name
+
+@app.route('/project1.html',methods=['POST','GET'])
+def submit():
+    # # form = TwitterForm()
+    # if request.method == 'POST':
+    # #     if form.validate_on_submit() == False:
+    # #         return render_template('project1.html',  form=form,showResult = False)
+    # #     else:
+    # #         username = request.form.get('username')
+    # #         return redirect(url_for(getUsername))
+        
+    # # elif request.method == 'GET':
+    #     result = request.form['text']
+    #     return render_template('prject1.html', result =result)
+    # else:
+    #     return render_template('project1.html')        
+    if request.method == 'POST':
+      user = request.form['nm']
+      return redirect(url_for('success',name = user))
+    else:
+      user = request.args.get('nm')
+      return redirect(url_for('success',name = user))
 
 @app.errorhandler(404)
 def page_not_found(error):
