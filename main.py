@@ -31,9 +31,6 @@ def home():
 
 
 
-@app.route('/success/<name>')
-def success(name):
-   return 'welcome %s' % name
 
 @app.route('/project1.html',methods=['POST','GET'])
 def submit():
