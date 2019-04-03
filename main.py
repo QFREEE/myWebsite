@@ -14,7 +14,7 @@
 
 # [START gae_python37_app]
 from flask import Flask,render_template,flash,redirect,request,url_for,json
-from project1 import TwitterForm
+from twitterProject.__init__ import twitterGenerator
 from flask_wtf import FlaskForm
 
 # from config import Config
@@ -51,11 +51,15 @@ def submit():
     # else:
     #     return render_template('project1.html')        
     if request.method == 'POST':
-      user = request.form['nm']
-      return redirect(url_for('success',name = user))
+      username = request.form['username']
+
+      
+  
+      result = twitterGenerator(username)
+      return render_template('project1.html',result = result)
     else:
-      user = request.args.get('nm')
-      return redirect(url_for('success',name = user))
+  
+      return render_template('project1.html')
 
 @app.errorhandler(404)
 def page_not_found(error):
