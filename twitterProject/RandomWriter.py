@@ -232,7 +232,14 @@ class RandomWriter(object):
         wordList = tweet.split()
         for word in wordList:
           if word[0] != '@' and "https" not in word:
-            yield word
+            if self.tokenization == Tokenization.character:
+              for chr in word:
+                yield chr
+            elif self.tokenization == Tokenization.none or self.tokenization == Tokenization.word:
+              yield word
+            else:
+              raise TypeError()
+            
     
     def train_tweets(self,username):
       temp = self.clean_tweets(username)
